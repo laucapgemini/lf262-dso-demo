@@ -43,6 +43,7 @@ spec:
       volumeMounts:
         - name: jenkins-docker-cfg
           mountPath: /kaniko/.docker
+          readOnly: true
   volumes:
     - name: m2
       hostPath:
@@ -54,10 +55,5 @@ spec:
       hostPath:
         path: /tmp/trivycache/
     - name: jenkins-docker-cfg
-      projected:
-        sources:
-          - secret:
-            name: regcred
-            items:
-              - key: .dockerconfigjson
-                path: config.json
+      secret:
+        secretName: regcredf
