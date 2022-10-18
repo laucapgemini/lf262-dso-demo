@@ -44,6 +44,19 @@ pipeline {
         }
       }
     }
+    stage('OSS Licence Finder') {
+    	steps {
+          container('licensefinder') {
+            sh 'ls -lal'
+            sh '''#!/bin/bash --login
+                  /bin/bash --login
+                  rvm use default
+                  gem install licence_finder
+                  license_finder
+               '''
+          }
+        }
+    }
     stage('Package') {
       parallel {
         stage('Create Jarfile') {
