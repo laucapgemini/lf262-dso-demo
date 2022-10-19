@@ -44,6 +44,12 @@ spec:
         - name: jenkins-docker-cfg
           mountPath: /kaniko/.docker
           readOnly: true
+    - name: slscan
+      image: shiftleft/sast-scan:latest
+      imagePullPolicy: Always
+      command:
+        - cat
+      tty: true
   volumes:
     - name: m2
       hostPath:
