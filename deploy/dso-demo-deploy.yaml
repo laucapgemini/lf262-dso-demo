@@ -18,7 +18,7 @@ spec:
         app: dso-demo
     spec:
       containers:
-      - image: lauroffecapgemini/dso-demo
+      - image: lauroffecapgemini/dsodemo
         name: dso-demo
         ports:
         - containerPort: 8080
